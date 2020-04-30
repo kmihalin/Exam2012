@@ -1,0 +1,46 @@
+const int button = 4 //declare constants and their pins
+const int LED1 = 5;
+const int LED2 = 6;
+const int potentiometer = A0;
+
+void setup (){ // code to run once
+pinMode(LED1, OUTPUT); //set leds and button
+pinMode(LED2, OUTPUT);
+pinMode(button, INPUT);
+Serial.begin(9600); //begin serial commumication
+}
+
+//declare variables
+int pressed;
+int pot;
+unsigned long previous=0;
+int interval;
+int buttonState;
+int LED1state == LOW;
+int LED2state == LOW;
+
+void loop (){ //code to run repeadtely
+pressed = digitalRead(button); //read the button state
+pot = analogRead(potentiometer); //read the potentiometer
+
+pot = map(pot, 0, 1023, 200, 1000); //map the interval times on potentiometer
+
+interval=pot; //the interval is the potentiometer setting
+
+if(buttonState==HIGH){ //if button is pressed
+  if(millis()-previous >= interval){
+    previous = millis(); //stores last time blinked
+      if(LED2state==LOW){ //if the led is on turn it off and vice versa
+      LED1state==HIGH);
+      }
+      
+      else{
+      LED1state==LOW;
+      }
+      
+    digitalWrite(LED1, LED1state); //write the state of the LED
+    digitalWrite(LED2, LED2state);
+  
+  }
+}
+}
